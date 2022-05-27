@@ -1,6 +1,6 @@
-var citySelector = document.querySelector('searchboxsubmit');
+var search = document.querySelector('search');
 
-citySelector.addEventListener("click", function() {
+search.addEventListener("click", function() {
     console.log('clicked')
   });
 
