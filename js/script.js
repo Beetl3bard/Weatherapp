@@ -36,11 +36,38 @@ var weatherApi = function(city) {
   function currentdate(data){
     var date= new Date(data.dt*1000).toLocaleDateString()
     var wind= data.wind.speed
-    console.log(date);
-    console.log(wind);
+    var cityNameTitle = data.name
+    
 
-    var currentcity = document.querySelector(".currentcity");
-    currentcity.textContent = "{"+date+"}"
-    //windspeed.textContent = "{"+wind+ "}"
+    var cityName=document.querySelector(".cityName")
+    cityName.textContent=cityNameTitle + " " +date
+    // var currentcity = document.querySelector(".currentcity");
+    // currentcity.textContent = date
+    var windspeed = document.querySelector(".windspeed")
+    windspeed.textContent = wind + " mph"
   }
   
+//   var fiveDay = function(city) {
+    
+//     var apiUrl = "api.openweathermap.org/data/2.5/forecast?q=memphis&appid=f315da550213c8aba9a006208bd196d6";
+  
+//     // make a get request to url
+//     fetch(apiUrl)
+//       .then(function(response) {
+//         // request was successful
+//         if (response.ok) {
+//           console.log(response);
+//           response.json().then(function(data) {
+//             currentdate(data);
+//             console.log(data);
+           
+//           });
+//         } else {
+//           alert('Error: API Endpoint Not Found');
+//         }
+//       })
+//       .catch(function(error) {
+//         alert("Unable to connect");
+//       });
+//   };
+//   fiveDay();
