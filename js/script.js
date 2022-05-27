@@ -54,7 +54,7 @@ var weatherApi = function(city) {
   var fiveDay = function() {
     
     var apiUrl = "api.openweathermap.org/data/2.5/forecast?q=memphis&appid=f315da550213c8aba9a006208bd196d6";
-  
+    
     // make a get request to url
     fetch(apiUrl)
       .then(function(response) {
