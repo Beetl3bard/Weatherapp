@@ -11,10 +11,10 @@ search.addEventListener("click", function(event) {
 
 var weatherApi = function(city) {
     
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=f315da550213c8aba9a006208bd196d6&units=imperial";
+    var weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=f315da550213c8aba9a006208bd196d6&units=imperial";
   
     // make a get request to url
-    fetch(apiUrl)
+    fetch(weatherUrl)
       .then(function(response) {
         // request was successful
         if (response.ok) {
@@ -47,27 +47,31 @@ var weatherApi = function(city) {
     windspeed.textContent = wind + " mph"
   }
   
-//   var fiveDay = function(city) {
+  function coord(data){
+      var lat = data.coord.lat
+    console.log(lat);
+  }
+  var fiveDay = function() {
     
-//     var apiUrl = "api.openweathermap.org/data/2.5/forecast?q=memphis&appid=f315da550213c8aba9a006208bd196d6";
+    var apiUrl = "api.openweathermap.org/data/2.5/forecast?q=memphis&appid=f315da550213c8aba9a006208bd196d6";
   
-//     // make a get request to url
-//     fetch(apiUrl)
-//       .then(function(response) {
-//         // request was successful
-//         if (response.ok) {
-//           console.log(response);
-//           response.json().then(function(data) {
-//             currentdate(data);
-//             console.log(data);
+    // make a get request to url
+    fetch(apiUrl)
+      .then(function(response) {
+        // request was successful
+        if (response.ok) {
+          console.log(response);
+          response.json().then(function(data) {
+            currentdate(data);
+            console.log(data);
            
-//           });
-//         } else {
-//           alert('Error: API Endpoint Not Found');
-//         }
-//       })
-//       .catch(function(error) {
-//         alert("Unable to connect");
-//       });
-//   };
-//   fiveDay();
+          });
+        } else {
+          alert( 'Endpoint Not Found');
+        }
+      })
+      .catch(function(error) {
+        alert("Unable to connect");
+      });
+  };
+  fiveDay();
