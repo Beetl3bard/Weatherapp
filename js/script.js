@@ -51,12 +51,12 @@ var weatherApi = function(city) {
       var lat = data.coord.lat
     console.log(lat);
   }
-  var fiveDay = function() {
+  var fiveDay = function(city) {
     
-    var apiUrl = "api.openweathermap.org/data/2.5/forecast?q=memphis&appid=f315da550213c8aba9a006208bd196d6";
-    
+    var forcastUrl = "https:api.openweathermap.org/data/2.5/forecast?q="+city+"appid=f9be46b1327a91395e209580a933a70d";
+   
     // make a get request to url
-    fetch(apiUrl)
+    fetch(forcastUrl)
       .then(function(response) {
         // request was successful
         if (response.ok) {
