@@ -1,11 +1,15 @@
 var search = document.querySelector('.search');
 var cityInput=document.querySelector("#searchbox")
+var newCard=document.querySelector(".card-container")
 
 search.addEventListener("click", function(event) {
     event.preventDefault();
     var city = cityInput.value
     //console.log(city)
     weatherApi(city);
+    fiveDay(city);
+
+    cityInput.value="";
   });
 
 
@@ -47,13 +51,9 @@ var weatherApi = function(city) {
     windspeed.textContent = wind + " mph"
   }
   
-  function coord(data){
-      var lat = data.coord.lat
-    console.log(lat);
-  }
   var fiveDay = function(city) {
     
-    var forcastUrl = "https:api.openweathermap.org/data/2.5/forecast?q="+city+"appid=f9be46b1327a91395e209580a933a70d";
+    var forcastUrl = "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid=f9be46b1327a91395e209580a933a70d&units=imperial";
    
     // make a get request to url
     fetch(forcastUrl)
@@ -62,7 +62,7 @@ var weatherApi = function(city) {
         if (response.ok) {
           console.log(response);
           response.json().then(function(data) {
-            currentdate(data);
+            forcastCard(data);
             console.log(data);
            
           });
@@ -74,4 +74,21 @@ var weatherApi = function(city) {
         alert("Unable to connect");
       });
   };
-  fiveDay();
+  
+  var forcastCard=function(data){
+      
+      
+     
+    
+      
+      for (var index = 0; index < data.list.length; index++) {
+          console.log(data.list[index].dt_txt);
+          console.log(data.list[index].main.humidity)
+          var newHumidity=data.list[index].main.humidity
+            
+        
+          newCard.append(newHumidity,)
+      }
+      
+  }
+  
