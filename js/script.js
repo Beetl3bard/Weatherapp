@@ -84,8 +84,9 @@ var weatherApi = function(city) {
       for (var index = 0; index < data.list.length; index++) {
           console.log(data.list[index].dt_txt);
           console.log(data.list[index].main.humidity)
-          var newHumidity=data.list[index].main.humidity
-            
+          var newHumidity=document.createElement("p")
+            newHumidity.textContent=data.list[index].main.humidity
+        
         
           newCard.append(newHumidity,)
       }
