@@ -1,14 +1,21 @@
 Header.H1{
     text-align: center;
 }
+.container{
+    Border: solid 5px;
+}
 .card-container{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 .card{
     border: solid #333 2px;
+    width: 20%;
     border-radius: 5px;
     flex: 1 1 auto;
     flex-wrap: wrap;
     flex-direction: row;
+    Background-color: rgba(0, 98, 255, .5)
+    
 }

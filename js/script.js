@@ -39,16 +39,14 @@ var weatherApi = function(city) {
 
   function currentdate(data){
     var date= new Date(data.dt*1000).toLocaleDateString()
-    var wind= data.wind.speed
-    var cityNameTitle = data.name
-    
-
     var cityName=document.querySelector(".cityName")
-    cityName.textContent=cityNameTitle + " " +date
-    // var currentcity = document.querySelector(".currentcity");
-    // currentcity.textContent = date
-    var windspeed = document.querySelector(".windspeed")
-    windspeed.textContent = wind + " mph"
+        cityName.textContent=data.name + " " +date
+    var currentTemp = document.querySelector(".currentTemp");
+        currentTemp.textContent = "TEMP: "+data.main.temp
+    var currentHumidity=document.querySelector('.currentHumidity')
+        currentHumidity.textContent="HUMIDITY: "+data.main.humidity+"%"
+    var windspeed = document.querySelector(".windspeed");
+        windspeed.textContent ="WIND: "+ data.wind.speed + " mph"
   }
   
   var fiveDay = function(city) {
@@ -82,13 +80,19 @@ var weatherApi = function(city) {
     
       
       for (var index = 0; index < data.list.length; index++) {
-          console.log(data.list[index].dt_txt);
-          console.log(data.list[index].main.humidity)
-          var newHumidity=document.createElement("p")
-            newHumidity.textContent=data.list[index].main.humidity
+         var anotherCard=document.createElement("div")
+          anotherCard.classList="card"
+        var newHeader=document.createElement("h4")
+          newHeader.textContent=data.list[index].dt_txt
+        var newTemp=document.createElement("p")
+            newTemp.textContent="TEMP: " + data.list[index].main.temp
+        var newWind=document.createElement("p") 
+            newWind.textContent="WIND: " + data.list[index].wind.speed
+        var newHumidity=document.createElement("p")
+            newHumidity.textContent="HUMIDITY: "+data.list[index].main.humidity+"%"
         
-        
-          newCard.append(newHumidity,)
+        anotherCard.append(newHeader,newTemp,newWind,newHumidity)
+          newCard.appendChild(anotherCard)
       }
       
   }
